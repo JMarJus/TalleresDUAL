@@ -1,0 +1,56 @@
+<configuration>
+
+  <!-- VARIABLES -->
+  <timestamp key="logDate" datePattern="yyyy-MM-dd"/>
+  
+  <!-- LOGGER ROOT -->
+  <root level="debug">
+    <appender-ref ref="consoleOutput"/>
+    <appender-ref ref="fileOutput"/>
+    <appender-ref ref="rollingFileOutput"/>
+  </root>
+  
+  <!-- CONSOLE OUTPUT -->
+  <appender name="consoleOutput"
+    class="ch.qos.logback.core.ConsoleAppender">
+    <!-- OUTPUT FORMAT -->
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-4level %logger{32} - [%method] - %msg%n</pattern>
+    </encoder>
+  </appender>
+  
+  <!-- FILE OUTPUT -->
+  <appender name="fileOutput"
+    class="ch.qos.logback.core.FileAppender">
+    <!-- FILE PATH -->
+    <file>./logs/fileOutput-${logDate}.log</file>
+    <!-- REGENERATION OF FILE ON RUN -->
+    <append>false</append>
+    <immediateFlush>true</immediateFlush>
+    <!-- OUTPUT FORMAT -->
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-4level %logger{32} - [%method] - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- FILE OTUPUT - ROLLING -->
+  <appender name="rollingFileOutput" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- FILE PATH -->
+    <file>./logs/rollingFileOutput-${logDate}.log</file>
+    <!-- POLICY -->
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <fileNamePattern>./logs/rollingFileOutput-${logDate}.%i.zip</fileNamePattern>
+    </rollingPolicy>
+    <!-- FILE QUANTITY AND SIZE -->
+    <minIndex>1</minIndex>
+    <maxIndex>3</maxIndex>
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <maxFileSize>50KB</maxFileSize>
+    </triggeringPolicy>
+    <!-- OUTPUT FORMAT -->
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-4level %logger{32} - [%method] - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+</configuration>

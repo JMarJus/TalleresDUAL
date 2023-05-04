@@ -10,9 +10,9 @@ import org.slf4j.LoggerFactory;
  * @author Juan Martinez Justicia
  */
 public class App {
-  /** LOGGER */
+  // Initialization of the Logger
   private static final Logger LOG = (Logger) LoggerFactory.getLogger(App.class);
-  
+  private static final int LOGGER_CHECKER_LOOPS = 999999999; // READ LINE 35
   /**
    * Method: main
    * @param args
@@ -31,6 +31,12 @@ public class App {
     greaterThan(randomNum, 50);
     if (LOG.isTraceEnabled()) {
       LOG.trace("Terminated");
+    }
+    // Attempting generation of multiple 50KB size file outputs by using a loop
+    for (int i = 0; i < LOGGER_CHECKER_LOOPS; i++) {
+      if (LOG.isDebugEnabled()) {
+        LOG.debug("Iteration number: " + (i + 1));
+      }
     }
   }
 
