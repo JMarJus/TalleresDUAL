@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 public class App {
   // Initialization of the Logger
   private static final Logger LOG = (Logger) LoggerFactory.getLogger(App.class);
-  private static final int LOGGER_CHECKER_LOOPS = 999999999; // READ LINE 35
+  private static final int LOGGER_CHECKER_LOOPS = 7500; // READ LINE 35
   /**
    * Method: main
    * @param args

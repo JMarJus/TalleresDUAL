@@ -19,7 +19,7 @@
     </encoder>
   </appender>
   
-  <!-- FILE OUTPUT -->
+  <!-- FILE OUTPUT (UNUSED) -->
   <appender name="fileOutput"
     class="ch.qos.logback.core.FileAppender">
     <!-- FILE PATH -->
@@ -32,7 +32,7 @@
       <pattern>%d{HH:mm:ss.SSS} [%thread] %-4level %logger{32} - [%method] - %msg%n</pattern>
     </encoder>
   </appender>
-
+  
   <!-- FILE OTUPUT - ROLLING -->
   <appender name="rollingFileOutput" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <!-- FILE PATH -->
