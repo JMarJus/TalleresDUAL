@@ -13,7 +13,7 @@ public class App {
   /** Logger implementation */
   private static final Logger LOG = (Logger) LoggerFactory.getLogger(App.class);
   /** Number of loops for generation of files */
-  private static final int LOGGER_CHECKER_LOOPS = 7500; // READ LINE 36
+  private static final int LOGGER_CHECKER_LOOPS = 3750;
   /**
    * Method: main
    * @param args
@@ -21,6 +21,12 @@ public class App {
   public static void main(String[] args) {
     if (LOG.isTraceEnabled()) {
       LOG.trace("Started");
+    }
+    // Attempting generation of multiple 50KB size file outputs by using a loop
+    for (int i = 0; i < LOGGER_CHECKER_LOOPS; i++) {
+      if (LOG.isDebugEnabled()) {
+        LOG.debug("Iteration number: " + (i + 1));
+      }
     }
     // Generating random number and checking if it is greater than 100
     final int maxNumber = 100;
@@ -32,12 +38,6 @@ public class App {
     greaterThan(randomNum, 50);
     if (LOG.isTraceEnabled()) {
       LOG.trace("Terminated");
-    }
-    // Attempting generation of multiple 50KB size file outputs by using a loop
-    for (int i = 0; i < LOGGER_CHECKER_LOOPS; i++) {
-      if (LOG.isDebugEnabled()) {
-        LOG.debug("Iteration number: " + (i + 1));
-      }
     }
   }
 

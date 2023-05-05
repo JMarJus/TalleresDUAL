@@ -4,7 +4,7 @@
   <timestamp key="logDate" datePattern="yyyy-MM-dd"/>
   
   <!-- LOGGER ROOT -->
-  <root level="debug">
+  <root level="trace">
     <appender-ref ref="consoleOutput"/>
     <appender-ref ref="fileOutput"/>
     <appender-ref ref="rollingFileOutput"/>
@@ -19,12 +19,12 @@
     </encoder>
   </appender>
   
-  <!-- FILE OUTPUT (UNUSED) -->
+  <!-- FILE OUTPUT -->
   <appender name="fileOutput"
     class="ch.qos.logback.core.FileAppender">
     <!-- FILE PATH -->
     <file>./logs/fileOutput-${logDate}.log</file>
-    <!-- REGENERATION OF FILE ON RUN -->
+    <!-- REGENERATION OF FILE ON RUN (CURRENTLY ON) -->
     <append>false</append>
     <immediateFlush>true</immediateFlush>
     <!-- OUTPUT FORMAT -->
