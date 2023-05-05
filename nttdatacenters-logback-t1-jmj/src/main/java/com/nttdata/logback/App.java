@@ -10,9 +10,10 @@ import org.slf4j.LoggerFactory;
  * @author Juan Martinez Justicia
  */
 public class App {
-  // Initialization of the Logger
+  /** Logger implementation */
   private static final Logger LOG = (Logger) LoggerFactory.getLogger(App.class);
-  private static final int LOGGER_CHECKER_LOOPS = 7500; // READ LINE 35
+  /** Number of loops for generation of files */
+  private static final int LOGGER_CHECKER_LOOPS = 7500; // READ LINE 36
   /**
    * Method: main
    * @param args
