@@ -21,13 +21,18 @@ public class BouncingObstacle {
   public void ballCheck(Game pinball, Ball ball) {
     // If the ball is making contact with the obstacle's area
     if (ball.getPosX() <= posX + radius && ball.getPosX() >= posX - radius && ball.getPosY() <= posY + radius && ball.getPosY() >= posY - radius) {
-        // Change the direction according to the touch position
-        double diffX = ball.getPosX() - posX;
-        ball.setAccX(Math.signum(diffX) * 0.5);
-        ball.setSpdX(diffX);
-        double diffY = ball.getPosY() - posY;
-        ball.setSpdY(diffY);
-        pinball.setPoints(pinball.getPoints() + 1);
+      // Show bounce
+      if (pinball.isEvents()) {
+        System.out.println("Ball bounce! Obstacle at (" + posX + ", " + posY + "), radius: " + radius);
+      }
+      
+      // Change the direction according to the touch position
+      double diffX = ball.getPosX() - posX;
+      ball.setAccX(Math.signum(diffX) * -0.1);
+      ball.setSpdX(diffX);
+      double diffY = ball.getPosY() - posY;
+      ball.setSpdY(diffY);
+      pinball.setPoints(pinball.getPoints() + 1);
     }
   }
 }

@@ -8,8 +8,9 @@ public class Game {
   // Points
   private int points = 0;
   
-  // If the coordinates will be shown
-  private boolean show = false;
+  // If the coordinates and/or events will be shown
+  private boolean coordinates;
+  private boolean events;
   
   // Obstacles (position is randomized)
   private BouncingObstacle obs1 = new BouncingObstacle(this);
@@ -50,12 +51,20 @@ public class Game {
     this.points = points;
   }
 
-  public boolean isShow() {
-    return show;
+  public boolean isCoordinates() {
+    return coordinates;
   }
 
-  public void setShow(boolean show) {
-    this.show = show;
+  public void setCoordinates(boolean coordinates) {
+    this.coordinates = coordinates;
+  }
+
+  public boolean isEvents() {
+    return events;
+  }
+
+  public void setEvents(boolean events) {
+    this.events = events;
   }
 
   public BouncingObstacle getObs1() {

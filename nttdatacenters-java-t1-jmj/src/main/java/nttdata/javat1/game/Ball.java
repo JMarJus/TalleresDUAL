@@ -31,8 +31,14 @@ public class Ball {
    */
   public void fall(Game pinball) {
     for (posY = 0; posY < pinball.getHeight(); posY += spdY) {
-      // If the horizontal speed has reached zero, the acceleration will stop having effect
-      if (spdX == 0) {
+      // Show coordinates
+      if (pinball.isCoordinates()) {
+        System.out.println("(" + posX + ", " + posY + ")");
+      }
+      
+      // If the horizontal speed has reached zero or horizontal acceleration shares its signum, both properties will stop having effect
+      if (spdX == 0 || Math.signum(spdX) == Math.signum(accX)) {
+        spdX = 0;
         accX = 0;
       }
       
@@ -42,26 +48,20 @@ public class Ball {
       posX += spdX;
       
       // If the ball goes out of bounds (X), the horizontal direction is reversed and an additional horizontal step is taken
-      if (posX < 0) {
+      if (posX < 0 || posX > pinball.getWidth()) {
         spdX = -spdX;
         accX = -accX;
         posX += spdX;
-      }
-      if (posX > pinball.getWidth()) {
-        spdX = -spdX;
-        accX = -accX;
-        posX += spdX;
+        // Show clash
+        if (pinball.isEvents()) {
+          System.out.println("Wall clash!");
+        }
       }
       
       // For every step, check if the ball is making contact with any of the obstacles
       pinball.getObs1().ballCheck(pinball, this);
       pinball.getObs2().ballCheck(pinball, this);
       pinball.getObs3().ballCheck(pinball, this);
-      
-      // Show coordinates
-      if (pinball.isShow()) {
-        System.out.println(posX + ", " + posY);
-      }
     }
   }
   
